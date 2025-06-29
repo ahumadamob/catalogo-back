@@ -21,6 +21,6 @@ public class ItemController {
 
     @PostMapping
     public Item create(@RequestBody Item item) {
-        return service.save(item);
+        return service.create(item);
     }
 }

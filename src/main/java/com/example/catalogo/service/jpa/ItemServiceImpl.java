@@ -20,7 +20,26 @@ public class ItemServiceImpl implements IItemService {
     }
 
     @Override
-    public Item save(Item item) {
+    public Item findById(Long id) {
+        return repository.findById(id).orElse(null);
+    }
+
+    @Override
+    public Item create(Item item) {
         return repository.save(item);
+    }
+
+    @Override
+    public Item update(Long id, Item item) {
+        if (!repository.existsById(id)) {
+            return null;
+        }
+        item.setId(id);
+        return repository.save(item);
+    }
+
+    @Override
+    public void delete(Long id) {
+        repository.deleteById(id);
     }
 }
