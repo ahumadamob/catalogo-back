@@ -2,14 +2,16 @@ package com.example.catalogo.service;
 
 import com.example.catalogo.entity.Item;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 
 /**
  * Servicio que define operaciones CRUD para {@link Item}.
  */
 public interface IItemService {
 
-    List<Item> findAll();
+    Page<Item> findAll(Pageable pageable);
 
     Item findById(Long id);
 
