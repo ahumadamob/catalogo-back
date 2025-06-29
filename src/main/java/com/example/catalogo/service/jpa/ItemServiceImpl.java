@@ -3,6 +3,7 @@ package com.example.catalogo.service.jpa;
 import com.example.catalogo.entity.Item;
 import com.example.catalogo.repository.ItemRepository;
 import com.example.catalogo.service.IItemService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,11 +11,8 @@ import java.util.List;
 @Service
 public class ItemServiceImpl implements IItemService {
 
-    private final ItemRepository repository;
-
-    public ItemServiceImpl(ItemRepository repository) {
-        this.repository = repository;
-    }
+    @Autowired
+    private ItemRepository repository;
 
     @Override
     public List<Item> findAll() {

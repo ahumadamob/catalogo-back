@@ -2,6 +2,7 @@ package com.example.catalogo.controller;
 
 import com.example.catalogo.entity.Item;
 import com.example.catalogo.service.IItemService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,11 +11,8 @@ import java.util.List;
 @RequestMapping("/items")
 public class ItemController {
 
-    private final IItemService service;
-
-    public ItemController(IItemService service) {
-        this.service = service;
-    }
+    @Autowired
+    private IItemService service;
 
     @GetMapping
     public List<Item> all() {
