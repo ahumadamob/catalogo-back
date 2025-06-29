@@ -7,6 +7,7 @@ import com.example.catalogo.service.IItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,15 +22,16 @@ public class ItemController {
     private IItemService service;
 
     @GetMapping
-    public ResponseEntity<ApiResponse<List<Item>>> all(Pageable pageable) {
+    public ResponseEntity<ApiResponse<List<Item>>> all(
+            @PageableDefault(size = 20, page = 0) Pageable pageable) {
         Page<Item> page = service.findAll(pageable);
 
-        Pagination pagination = new Pagination(
-                page.getNumber(),
-                page.getSize(),
-                page.getTotalElements(),
-                page.getTotalPages()
-        );
+        Pagination pagination = Pagination.builder()
+                .page(page.getNumber())
+                .pageSize(page.getSize())
+                .totalElements(page.getTotalElements())
+                .totalPages(page.getTotalPages())
+                .build();
 
         ApiResponse<List<Item>> response = ApiResponse.<List<Item>>builder()
                 .success(true)
