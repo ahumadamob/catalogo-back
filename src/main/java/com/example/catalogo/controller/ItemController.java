@@ -24,12 +24,12 @@ public class ItemController {
     public ResponseEntity<ApiResponse<List<Item>>> all(Pageable pageable) {
         Page<Item> page = service.findAll(pageable);
 
-        Pagination pagination = Pagination.builder()
-                .page(page.getNumber())
-                .pageSize(page.getSize())
-                .totalElements(page.getTotalElements())
-                .totalPages(page.getTotalPages())
-                .build();
+        Pagination pagination = new Pagination(
+                page.getNumber(),
+                page.getSize(),
+                page.getTotalElements(),
+                page.getTotalPages()
+        );
 
         ApiResponse<List<Item>> response = ApiResponse.<List<Item>>builder()
                 .success(true)
