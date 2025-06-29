@@ -1,7 +1,7 @@
 package com.example.catalogo.controller;
 
-import com.example.catalogo.model.Item;
-import com.example.catalogo.repository.ItemRepository;
+import com.example.catalogo.entity.Item;
+import com.example.catalogo.service.IItemService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,19 +10,19 @@ import java.util.List;
 @RequestMapping("/items")
 public class ItemController {
 
-    private final ItemRepository repository;
+    private final IItemService service;
 
-    public ItemController(ItemRepository repository) {
-        this.repository = repository;
+    public ItemController(IItemService service) {
+        this.service = service;
     }
 
     @GetMapping
     public List<Item> all() {
-        return repository.findAll();
+        return service.findAll();
     }
 
     @PostMapping
     public Item create(@RequestBody Item item) {
-        return repository.save(item);
+        return service.save(item);
     }
 }

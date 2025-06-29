@@ -15,3 +15,8 @@ mvn spring-boot:run
 ```
 
 El proyecto expone un endpoint REST en `/items`.
+
+## Estructura de paquetes
+
+- `entity` contiene las entidades JPA.
+- `service` define las interfaces de servicio y en `service.jpa` se encuentran las implementaciones que usan JPA.
