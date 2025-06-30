@@ -83,4 +83,23 @@ public class ItemController {
         response.setData(updated);
         return ResponseEntity.ok(response);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<ApiResponse<Void>> delete(@PathVariable Long id) {
+        ApiResponse<Void> response = new ApiResponse<>();
+
+        Item existing = service.findById(id);
+        if (existing == null) {
+            response.setSuccess(false);
+            response.setStatus(HttpStatus.NOT_FOUND.value());
+            response.setErrors(java.util.List.of(new ApiError("id", "Item no encontrado")));
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        }
+
+        service.delete(id);
+
+        response.setSuccess(true);
+        response.setStatus(HttpStatus.NO_CONTENT.value());
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(response);
+    }
 }
