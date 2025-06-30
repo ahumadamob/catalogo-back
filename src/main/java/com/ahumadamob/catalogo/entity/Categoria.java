@@ -1,8 +1,8 @@
 package com.ahumadamob.catalogo.entity;
 
 import com.ahumadamob.catalogo.entity.BaseEntity;
-import javax.persistence.*;
-import javax.validation.constraints.*;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
