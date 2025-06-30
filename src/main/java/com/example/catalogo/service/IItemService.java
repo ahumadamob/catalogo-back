@@ -4,6 +4,7 @@ import com.example.catalogo.entity.Item;
 
 import java.util.List;
 
+
 /**
  * Servicio que define operaciones CRUD para {@link Item}.
  */
