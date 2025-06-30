@@ -53,4 +53,34 @@ public class ItemController {
 
         return ResponseEntity.ok(response);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ApiResponse<Item>> update(@PathVariable Long id,
+                                                    @Valid @RequestBody Item item,
+                                                    BindingResult bindingResult) {
+        ApiResponse<Item> response = new ApiResponse<>();
+
+        if (bindingResult.hasErrors()) {
+            response.setSuccess(false);
+            response.setStatus(HttpStatus.BAD_REQUEST.value());
+            List<ApiError> errors = bindingResult.getFieldErrors().stream()
+                    .map(err -> new ApiError(err.getField(), err.getDefaultMessage()))
+                    .toList();
+            response.setErrors(errors);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        }
+
+        Item updated = service.update(id, item);
+        if (updated == null) {
+            response.setSuccess(false);
+            response.setStatus(HttpStatus.NOT_FOUND.value());
+            response.setErrors(java.util.List.of(new ApiError("id", "Item no encontrado")));
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        }
+
+        response.setSuccess(true);
+        response.setStatus(HttpStatus.OK.value());
+        response.setData(updated);
+        return ResponseEntity.ok(response);
+    }
 }
