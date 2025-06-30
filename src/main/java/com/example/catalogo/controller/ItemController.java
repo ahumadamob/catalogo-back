@@ -21,11 +21,10 @@ public class ItemController {
     public ResponseEntity<ApiResponse<List<Item>>> all() {
         List<Item> items = service.findAll();
 
-        ApiResponse<List<Item>> response = ApiResponse.<List<Item>>builder()
-                .success(true)
-                .status(HttpStatus.OK.value())
-                .data(items)
-                .build();
+        ApiResponse<List<Item>> response = new ApiResponse<>();
+        response.setSuccess(true);
+        response.setStatus(HttpStatus.OK.value());
+        response.setData(items);
 
         return ResponseEntity.ok(response);
     }
