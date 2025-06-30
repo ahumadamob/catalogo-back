@@ -1,6 +1,6 @@
 package com.example.catalogo.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
