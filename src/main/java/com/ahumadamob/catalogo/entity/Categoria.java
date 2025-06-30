@@ -1,17 +1,18 @@
 package com.ahumadamob.catalogo.entity;
 
 import com.ahumadamob.catalogo.entity.BaseEntity;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
+import javax.persistence.*;
+import javax.validation.constraints.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Data
+@SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
 @Table(name = "categorias", uniqueConstraints = @UniqueConstraint(columnNames = "url_amigable"))
 public class Categoria extends BaseEntity {
