@@ -2,6 +2,7 @@ package com.example.catalogo.controller;
 
 import com.example.catalogo.dto.ApiResponse;
 import com.example.catalogo.entity.Item;
+import com.example.catalogo.dto.ItemDto;
 import com.example.catalogo.service.IItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -33,7 +34,7 @@ public class ItemController {
     }
 
     @PostMapping
-    public ResponseEntity<ApiResponse<Item>> create(@Valid @RequestBody Item item, BindingResult bindingResult) {
+    public ResponseEntity<ApiResponse<Item>> create(@Valid @RequestBody ItemDto itemDto, BindingResult bindingResult) {
         ApiResponse<Item> response = new ApiResponse<>();
 
         if (bindingResult.hasErrors()) {
@@ -46,6 +47,8 @@ public class ItemController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
 
+        Item item = new Item();
+        item.setNombre(itemDto.getNombre());
         Item created = service.create(item);
         response.setSuccess(true);
         response.setStatus(HttpStatus.OK.value());
@@ -56,7 +59,7 @@ public class ItemController {
 
     @PutMapping("/{id}")
     public ResponseEntity<ApiResponse<Item>> update(@PathVariable Long id,
-                                                    @Valid @RequestBody Item item,
+                                                    @Valid @RequestBody ItemDto itemDto,
                                                     BindingResult bindingResult) {
         ApiResponse<Item> response = new ApiResponse<>();
 
@@ -70,6 +73,8 @@ public class ItemController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
 
+        Item item = new Item();
+        item.setNombre(itemDto.getNombre());
         Item updated = service.update(id, item);
         if (updated == null) {
             response.setSuccess(false);
