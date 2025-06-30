@@ -2,8 +2,7 @@ package com.example.catalogo.service;
 
 import com.example.catalogo.entity.Item;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import java.util.List;
 
 
 /**
@@ -11,7 +10,7 @@ import org.springframework.data.domain.Pageable;
  */
 public interface IItemService {
 
-    Page<Item> findAll(Pageable pageable);
+    List<Item> findAll();
 
     Item findById(Long id);
 

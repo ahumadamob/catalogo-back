@@ -5,9 +5,8 @@ import com.example.catalogo.repository.ItemRepository;
 import com.example.catalogo.service.IItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 
 @Service
 public class ItemServiceImpl implements IItemService {
@@ -16,8 +15,8 @@ public class ItemServiceImpl implements IItemService {
     private ItemRepository repository;
 
     @Override
-    public Page<Item> findAll(Pageable pageable) {
-        return repository.findAll(pageable);
+    public List<Item> findAll() {
+        return repository.findAll();
     }
 
     @Override
