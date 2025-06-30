@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
+import org.springframework.validation.BindingResult;
+import com.example.catalogo.dto.ApiError;
 import java.util.List;
 
 
@@ -30,7 +33,24 @@ public class ItemController {
     }
 
     @PostMapping
-    public Item create(@RequestBody Item item) {
-        return service.create(item);
+    public ResponseEntity<ApiResponse<Item>> create(@Valid @RequestBody Item item, BindingResult bindingResult) {
+        ApiResponse<Item> response = new ApiResponse<>();
+
+        if (bindingResult.hasErrors()) {
+            response.setSuccess(false);
+            response.setStatus(HttpStatus.BAD_REQUEST.value());
+            java.util.List<ApiError> errors = bindingResult.getFieldErrors().stream()
+                    .map(err -> new ApiError(err.getField(), err.getDefaultMessage()))
+                    .toList();
+            response.setErrors(errors);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        }
+
+        Item created = service.create(item);
+        response.setSuccess(true);
+        response.setStatus(HttpStatus.OK.value());
+        response.setData(created);
+
+        return ResponseEntity.ok(response);
     }
 }
