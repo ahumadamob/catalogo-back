@@ -1,16 +1,16 @@
-package com.example.catalogo.controller;
+package com.ahumadamob.catalogo.controller;
 
-import com.example.catalogo.dto.ApiResponse;
-import com.example.catalogo.entity.Item;
-import com.example.catalogo.dto.ItemDto;
-import com.example.catalogo.service.IItemService;
+import com.ahumadamob.catalogo.dto.ApiResponse;
+import com.ahumadamob.catalogo.entity.Item;
+import com.ahumadamob.catalogo.dto.ItemDto;
+import com.ahumadamob.catalogo.service.IItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 import org.springframework.validation.BindingResult;
-import com.example.catalogo.dto.ApiError;
+import com.ahumadamob.catalogo.dto.ApiError;
 import java.util.List;
 
 

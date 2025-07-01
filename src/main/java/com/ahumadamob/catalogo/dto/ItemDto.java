@@ -1,4 +1,4 @@
-package com.example.catalogo.dto;
+package com.ahumadamob.catalogo.dto;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;

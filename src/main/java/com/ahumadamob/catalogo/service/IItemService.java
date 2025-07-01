@@ -1,6 +1,6 @@
-package com.example.catalogo.service;
+package com.ahumadamob.catalogo.service;
 
-import com.example.catalogo.entity.Item;
+import com.ahumadamob.catalogo.entity.Item;
 
 import java.util.List;
 

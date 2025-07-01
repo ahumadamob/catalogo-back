@@ -1,8 +1,8 @@
-package com.example.catalogo.service.jpa;
+package com.ahumadamob.catalogo.service.jpa;
 
-import com.example.catalogo.entity.Item;
-import com.example.catalogo.repository.ItemRepository;
-import com.example.catalogo.service.IItemService;
+import com.ahumadamob.catalogo.entity.Item;
+import com.ahumadamob.catalogo.repository.ItemRepository;
+import com.ahumadamob.catalogo.service.IItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;

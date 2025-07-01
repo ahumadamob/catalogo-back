@@ -1,6 +1,6 @@
-package com.example.catalogo.repository;
+package com.ahumadamob.catalogo.repository;
 
-import com.example.catalogo.entity.Item;
+import com.ahumadamob.catalogo.entity.Item;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ItemRepository extends JpaRepository<Item, Long> {

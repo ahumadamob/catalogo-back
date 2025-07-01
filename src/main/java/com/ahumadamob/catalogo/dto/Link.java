@@ -1,4 +1,4 @@
-package com.example.catalogo.dto;
+package com.ahumadamob.catalogo.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,9 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Pagination {
-    private int page;
-    private int pageSize;
-    private long totalElements;
-    private int totalPages;
+public class Link {
+    private String rel;
+    private String href;
 }

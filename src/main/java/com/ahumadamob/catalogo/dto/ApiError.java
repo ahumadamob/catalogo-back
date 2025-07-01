@@ -1,4 +1,4 @@
-package com.example.catalogo.dto;
+package com.ahumadamob.catalogo.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Link {
-    private String rel;
-    private String href;
+public class ApiError {
+    private String field;
+    private String message;
 }
