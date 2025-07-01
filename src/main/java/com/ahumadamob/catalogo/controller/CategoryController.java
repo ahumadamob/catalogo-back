@@ -17,7 +17,7 @@ public class CategoryController {
 
     private final CategoryService service;
 
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<List<CategoriaDto>> getAllCategories() {
         return ResponseEntity.ok(service.getAllCategories());
     }
@@ -27,7 +27,7 @@ public class CategoryController {
         return ResponseEntity.ok(service.getCategoryById(id));
     }
 
-    @PostMapping("/")
+    @PostMapping
     public ResponseEntity<CategoriaDto> createCategory(@Valid @RequestBody CategoriaDto dto) {
         CategoriaDto created = service.createCategory(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(created);
